@@ -1,10 +1,15 @@
 FROM node:alpine
 
+ARG KEY
+ARG SECRET
+ARG BETA=false
+
+# Check Required Arguments
+RUN if [[ -z "${KEY}" || -z "${SECRET}" ]]; then echo "******* You must provide a KEY and SECRET build argument. *******" && exit 1; fi
+
 # Install Nexmo CLI
-RUN npm install -g nexmo-cli
+RUN if [ "${BETA}" = "false" ]; then npm install -g nexmo-cli; else npm install -g nexmo-cli@beta; fi
 
 USER node
 
-# Copy Credentials to User's Home Directory
-WORKDIR /home/node
-COPY .nexmorc . 
+RUN nexmo setup ${KEY} ${SECRET}

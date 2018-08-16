@@ -10,16 +10,16 @@ Clone the repository:
 git clone git@github.com:nexmo-community/nexmo-cli-docker.git
 ```
 
-Copy `example.nexmorc` to `.nexmorc` and edit to add your credentials:
-
-```bash
-cp example.nexmorc .nexmorc
-```
-
-Build the Docker container:
+Build the Docker container with required arguments:
 
 ```
-docker build -t nexmo-cli .
+docker build -t nexmo-cli --build-arg KEY=your_nexmo_api_key --build-arg SECRET=your_nexmo_api_secret .
+```
+
+If you would like to access the beta version you can add the optional `BETA` argument set to `true`:
+
+```
+docker build -t nexmo-cli-beta --build-arg KEY=your_nexmo_api_key --build-arg SECRET=your_nexmo_api_secret --build-arg BETA=true .
 ```
 
 ## Usage
@@ -43,3 +43,5 @@ This command is quite long and verbose. You can use the following alias to short
 ```bash
 alias nexmo="docker run --rm -it nexmo-cli nexmo"
 ```
+
+Where `nexmo-cli` is the tagged name from the build step.
