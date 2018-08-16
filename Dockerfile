@@ -13,3 +13,5 @@ RUN if [ "${BETA}" = "false" ]; then npm install -g nexmo-cli; else npm install 
 USER node
 
 RUN nexmo setup ${KEY} ${SECRET}
+
+ENTRYPOINT ["nexmo"]

@@ -27,7 +27,7 @@ docker build -t nexmo-cli-beta --build-arg KEY=your_nexmo_api_key --build-arg SE
 Once the container has been built you can check to make sure it's working by issuing the following command:
 
 ```bash
-docker run --rm -it nexmo-cli nexmo -V
+docker run --rm -it nexmo-cli -V
 ```
 
 You should see a version string.
@@ -35,13 +35,13 @@ You should see a version string.
 Example: List all your applications:
 
 ```bash
-docker run --rm -it nexmo-cli nexmo app:list
+docker run --rm -it nexmo-cli app:list
 ```
 
 This command is quite long and verbose. You can use the following alias to shorten it. Place it in your `.bashrc` file:
 
 ```bash
-alias nexmo="docker run --rm -it nexmo-cli nexmo"
+alias nexmo="docker run --rm -it nexmo-cli"
 ```
 
 Where `nexmo-cli` is the tagged name from the build step.
