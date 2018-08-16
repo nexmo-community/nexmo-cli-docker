@@ -37,3 +37,9 @@ Example: List all your applications:
 ```bash
 docker run --rm -it nexmo-cli nexmo app:list
 ```
+
+This command is quite long and verbose. You can use the following alias to shorten it. Place it in your `.bashrc` file:
+
+```bash
+alias nexmo="docker run --rm -it nexmo-cli nexmo"
+```
